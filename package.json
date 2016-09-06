@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.1",
+    "express": "^4.14.0",
     "hyper-aws4": "^1.1.1"
   },
   "devDependencies": {
