@@ -1,27 +1,17 @@
-import aws4 from 'hyper-aws4'
-import fetch from 'node-fetch'
 import express from 'express'
+import Hyper from 'hyper-api'
 
-const signOption = {
-  method: 'GET',
-  credential: {
-    accessKey: process.env.HYPER_ACCESS,
-    secretKey: process.env.HYPER_SECRET
-  }
-}
-
-
-
-let url = 'https://us-west-1.hyper.sh/containers/json'
-const headers = aws4.sign(Object.assign({}, {url}, signOption))
-let containers = fetch(url, {method: signOption.method, headers}).then((res) => {
-    return res.json()
-}).then((c) => console.log(c))
-
+let api = new Hyper()
 var app = express()
 
-app.get('/', (req, res) => {
-  res.send('Frontpage')
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+app.get('/containers/json', (req, res) => {
+  api.get('/containers/json').then(c => res.send(c))
 })
 
 app.listen(9000, () => {

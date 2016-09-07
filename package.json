@@ -12,7 +12,7 @@
   "dependencies": {
     "bluebird": "^3.4.1",
     "express": "^4.14.0",
-    "hyper-aws4": "^1.1.1"
+    "hyper-api": "^1.1.0",
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
