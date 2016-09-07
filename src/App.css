@@ -1,0 +1,19 @@
+* { box-sizing: border-box }
+
+.App {
+  text-align: center;
+}
+.Containers {
+  display: flex;
+}
+.Container {
+  display: flex;
+  width: 27vw;
+  height: 27vw;
+  align-items: center;
+  border: 3px solid red;
+  margin: 3vw;
+  padding: 3vw;
+  border-radius: 100%;
+  justify-content: center;
+}
