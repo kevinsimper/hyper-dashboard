@@ -5,6 +5,7 @@
 }
 .Containers {
   display: flex;
+  flex-wrap: wrap;
 }
 .Container {
   display: flex;

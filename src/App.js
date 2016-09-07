@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { get } from 'axios';
+import { TransitionMotion, spring } from 'react-motion'
 
 class App extends Component {
   constructor() {
@@ -19,21 +20,51 @@ class App extends Component {
 
     }, 1000)
   }
+  getDefaultStyles() {
+    return this.state.containers.map((c, key) => ({...c, key: key + '', style: {x: 0}}));
+  }
+  getStyles() {
+    return this.state.containers.map((c, key) => ({
+      key: key + '',
+      data: c,
+      style: {
+        x: spring(1)
+      }
+    }))
+  }
+  willEnter() {
+    return {x: 0};
+  }
+  willLeave() {
+    // triggered when c's gone. Keeping c until its width/height reach 0.
+    return {x: spring(0)};
+  }
   render() {
+    if(this.state.containers.length === 0) return <div/>;
     return (
       <div className="App">
         <h1>Hyper Dashboard</h1>
-        <div className='Containers'>
-          {this.state.containers.map((c, key) => {
-            return (
-              <div className='Container' key={key}>
-                <div>
-                  {c.Command}
+        <TransitionMotion
+          defaultStyles={this.getDefaultStyles()}
+          willEnter={this.willEnter}
+          willLeave={this.willLeave}
+          styles={this.getStyles()}>
+          {interpolatedStyles => {
+              return (
+                // first render: a, b, c. Second: still a, b, c! Only last one's a, b.
+                <div className='Containers'>
+                {interpolatedStyles.map(config => {
+                  return (
+                    <div key={config.key} style={{transform: `scale(${config.style.x})`}} className='Container'>
+                      <div>{config.data.Command}</div>
+                    </div>
+                  )
+                })}
                 </div>
-              </div>
-            )
-          })}
-        </div>
+              )
+            }
+          }
+        </TransitionMotion>
       </div>
     );
   }
