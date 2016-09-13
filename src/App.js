@@ -40,7 +40,7 @@ class App extends Component {
     return {x: spring(0)};
   }
   render() {
-    if(this.state.containers.length === 0) return <div/>;
+    if(this.state.containers.length === 0) return <div><h1>Hyper Dashboard</h1></div>;
     return (
       <div className="App">
         <h1>Hyper Dashboard</h1>
