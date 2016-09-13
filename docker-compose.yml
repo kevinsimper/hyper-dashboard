@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    build: .
+    volumes:
+     - ".:/app"
+    environment:
+      - HYPER_ACCESS=${HYPER_ACCESS}
+      - HYPER_SECRET=${HYPER_SECRET}
+    ports:
+      - "3000:3000"
+      - "9000:9000"

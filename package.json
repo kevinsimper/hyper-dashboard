@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run frontend & npm run backend",
+    "frontend": "react-scripts start",
     "backend": "babel-node --presets es2015 server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -17,7 +18,7 @@
     "axios": "^0.14.0",
     "bluebird": "^3.4.1",
     "express": "^4.14.0",
-    "hyper-api": "^1.1.0",
+    "hyper-api": "^1.2.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
   },
