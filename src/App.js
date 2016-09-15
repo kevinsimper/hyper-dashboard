@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { get } from 'axios';
 import { TransitionMotion, spring } from 'react-motion'
+import ContainerBoble from './components/ContainerBoble'
 
 class App extends Component {
   constructor() {
@@ -57,8 +58,8 @@ class App extends Component {
                 <div className='Containers'>
                 {interpolatedStyles.map(config => {
                   return (
-                    <div key={config.key} style={{transform: `scale(${config.style.x})`}} className='Container'>
-                      <div>{config.data.Command}</div>
+                    <div key={config.key} style={{transform: `scale(${config.style.x})`}}>
+                      <ContainerBoble data={config.data}/>
                     </div>
                   )
                 })}
