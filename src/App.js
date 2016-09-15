@@ -43,7 +43,9 @@ class App extends Component {
     if(this.state.containers.length === 0) return <div><h1>Hyper Dashboard</h1></div>;
     return (
       <div className="App">
-        <h1>Hyper Dashboard</h1>
+        <div className='App_Header'>
+          <h1>Hyper Dashboard</h1>
+        </div>
         <TransitionMotion
           defaultStyles={this.getDefaultStyles()}
           willEnter={this.willEnter}

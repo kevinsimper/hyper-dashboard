@@ -3,6 +3,11 @@
 .App {
   text-align: center;
 }
+.App_Header {
+  background-color: #056cbd;
+  color: #fff;
+  overflow: hidden;
+}
 .Containers {
   display: flex;
   flex-wrap: wrap;
@@ -12,7 +17,7 @@
   width: 27vw;
   height: 27vw;
   align-items: center;
-  border: 3px solid red;
+  border: 3px solid #056cbd;
   margin: 3vw;
   padding: 3vw;
   border-radius: 100%;
