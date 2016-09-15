@@ -20,7 +20,8 @@
     "express": "^4.14.0",
     "hyper-api": "^1.2.0",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "react-motion": "^0.4.4"
   },
   "devDependencies": {
     "react-scripts": "0.4.1",
