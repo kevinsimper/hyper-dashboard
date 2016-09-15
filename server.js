@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/containers/json', (req, res) => {
-  api.get('/containers/json').then(c => res.send(c))
+  api.get('/containers/json').then(c => res.send(c)).catch(e => console.log(e))
 })
 
 app.listen(9000, () => {
