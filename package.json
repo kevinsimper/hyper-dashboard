@@ -16,17 +16,17 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.14.0",
-    "bluebird": "^3.4.1",
+    "bluebird": "^3.4.6",
     "express": "^4.14.0",
-    "hyper-api": "^1.2.0",
+    "hyper-api": "^1.6.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-motion": "^0.4.4"
   },
   "devDependencies": {
     "react-scripts": "0.4.1",
-    "babel-cli": "^6.11.4",
-    "babel-preset-es2015": "^6.13.2"
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
