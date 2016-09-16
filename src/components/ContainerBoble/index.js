@@ -6,7 +6,7 @@ export default class ContainerBoble extends Component {
     const { data } = this.props
     const PublicPort = (data.Ports.length > 0 && data.Labels['sh.hyper.fip']) ? data.Ports[0].PublicPort : ''
     return (
-      <div className='Container'>
+      <div className='Container' onClick={() => { this.props.onClick(data.Id)}}>
         <div>{data.Image}</div>
         <div>{data.Command}</div>
         <div>{data.Status}</div>
