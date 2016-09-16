@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { get } from 'axios';
 import ContainerBubbles from './components/ContainerBubbles'
+import Sidebar from './components/Sidebar'
 
 class App extends Component {
   constructor() {
@@ -39,9 +40,7 @@ class App extends Component {
             <ContainerBubbles containers={this.state.containers} onClickContainer={this.onClickContainer.bind(this)}/>
           </div>
           {this.state.activeContainer.length > 0 &&
-            <div className='App_Sidebar'>
-              <h1>Logs for {this.state.activeContainer}</h1>
-            </div>
+            <Sidebar activeContainer={this.state.activeContainer}/>
           }
         </div>
       </div>
