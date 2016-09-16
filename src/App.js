@@ -38,9 +38,11 @@ class App extends Component {
           <div className='App_Content'>
             <ContainerBubbles containers={this.state.containers} onClickContainer={this.onClickContainer.bind(this)}/>
           </div>
-          <div className='App_Sidebar'>
-            <h1>Logs for {this.state.activeContainer}</h1>
-          </div>
+          {this.state.activeContainer.length > 0 &&
+            <div className='App_Sidebar'>
+              <h1>Logs for {this.state.activeContainer}</h1>
+            </div>
+          }
         </div>
       </div>
     );
