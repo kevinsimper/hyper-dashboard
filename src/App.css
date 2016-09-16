@@ -29,3 +29,6 @@
 .App_Main {
   display: flex;
 }
+.App_Content, .App_Sidebar {
+  flex: 1;
+}

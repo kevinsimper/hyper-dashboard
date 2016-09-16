@@ -7,7 +7,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      containers: []
+      containers: [],
+      activeContainer: ''
     }
   }
   componentWillMount() {
@@ -23,7 +24,7 @@ class App extends Component {
   }
   onClickContainer(containerId) {
     this.setState({
-      activeContainer: containerId
+      activeContainer: containerId.slice(0, 12)
     })
   }
   render() {
@@ -37,7 +38,9 @@ class App extends Component {
           <div className='App_Content'>
             <ContainerBubbles containers={this.state.containers} onClickContainer={this.onClickContainer.bind(this)}/>
           </div>
-          <div className='App_Sidebar'>Sidebar</div>
+          <div className='App_Sidebar'>
+            <h1>Logs for {this.state.activeContainer}</h1>
+          </div>
         </div>
       </div>
     );
