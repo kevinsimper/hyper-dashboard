@@ -12,14 +12,15 @@ class App extends Component {
     }
   }
   componentWillMount() {
-    setInterval(() => {
-      get('http://' + window.location.hostname + ':9000/containers/json').then(c => {
-        this.setState({
-          containers: c.data
-        })
+    this.getData()
+    setInterval(this.getData, 10000)
+  }
+  getData() {
+    get('http://' + window.location.hostname + ':9000/containers/json').then(c => {
+      this.setState({
+        containers: c.data
       })
-
-    }, 1000)
+    })
   }
   getDefaultStyles() {
     return this.state.containers.map((c, key) => ({...c, key: key + '', style: {x: 0}}));
