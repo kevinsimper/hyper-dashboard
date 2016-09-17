@@ -11,12 +11,36 @@ let api = new Hyper()
 
 app.use(express.static('build'))
 
+let activeRequest = null
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
+  socket.on('startlogs', function (data) {
+    startLogs(socket, data.container)
+  })
+  socket.on('stoplogs', () => {
+    activeRequest.abort()
+  })
+  socket.on('disconnect', () => {
+    if(activeRequest) {
+      activeRequest.abort()
+    }
+  })
+})
+
+function startLogs(socket, containerId) {
+  let fetchOptions = api.sign('POST', `/containers/${containerId}/attach?logs=1&stream=0&stdout=1`)
+  var request = require('request')
+  let through2 = require('through2')
+  activeRequest = request.post({
+    url: fetchOptions.fullUrl,
+    headers: fetchOptions.headers
+  })
+  activeRequest.pipe(through2((chunk, enc, callback) => {
+    let logLine = chunk.slice(8, chunk.length).toString()
+    console.log('log emitted', logLine)
+    socket.emit('logs', logLine)
+    callback(null, chunk.slice(8, chunk.length))
+  }))
+}
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
